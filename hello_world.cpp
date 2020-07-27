@@ -29,7 +29,7 @@ vec3 color(const ray& r, hitable_list *world) {
     // recは一般化のためにhit_record構造体ということがわかるように定義
     // hitable_listの各要素のhitがtrueならば法線ベクトルを加味した球の色付けを返す
     // そうでなければ背景のグラデーション（線形補間）を変えす
-    // hitable_listは*worldで、recはさらに
+    // hitable_listは*worldで、hitable_list::hit内でさらにsphere::hitが呼び出される
     if (world->hit(r,0.0,MAXFLOAT,rec)) {
         return 0.5*vec3(rec.normal.x()+1, rec.normal.y()+1, rec.normal.z()+1);
     } else {
